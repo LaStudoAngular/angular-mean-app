@@ -1,6 +1,9 @@
-<mat-card>
+<mat-card [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-form-field>
-    <input matInput placeholder="add new post ...">
+    <input matInput formControlName="title" placeholder="post title">
   </mat-form-field>
-  <button (click)="onAddPost()" mat-raised-button color="primary" class="uppercase">add post</button>
+  <mat-form-field>
+    <input matInput formControlName="body" placeholder="post body">
+  </mat-form-field>
+  <button type="submit" mat-raised-button color="primary" class="uppercase">add post</button>
 </mat-card>

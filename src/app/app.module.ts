@@ -7,8 +7,9 @@ import { PostCreateComponent } from './views/post-create/post-create.component';
 import { PostListComponent } from './views/post-list/post-list.component';
 import { PostItemComponent } from './views/post-item/post-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './shared/material.module';
+import { MaterialModule } from './shared/modules/material.module';
 import { HeaderComponent } from './components/header/header.component';
+import { CoreModule } from './shared/modules/core.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { HeaderComponent } from './components/header/header.component';
     PostItemComponent,
     HeaderComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule, CoreModule],
   providers: [],
   bootstrap: [AppComponent],
 })
