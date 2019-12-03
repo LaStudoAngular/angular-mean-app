@@ -1,4 +1,4 @@
-<mat-accordion multi="true" *ngIf="posts; else loading">
+<mat-accordion multi="true" *ngIf="posts$ | async as posts; else loading">
   <mat-expansion-panel *ngFor="let post of posts">
     <mat-expansion-panel-header>
       <mat-panel-title>{{ post.title }}</mat-panel-title>

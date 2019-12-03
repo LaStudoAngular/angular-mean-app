@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { PostService } from '../../shared/services/post.service';
+import { Post } from '../../shared/interfaces/post';
 
 @Component({
   selector: 'mn-post-create',
@@ -7,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./post-create.component.scss'],
 })
 export class PostCreateComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private postService: PostService) {}
 
   public postForm = this.fb.group({
     title: ['', Validators.required],
@@ -19,7 +21,11 @@ export class PostCreateComponent implements OnInit {
   public onSubmit(): void {
     if (this.postForm.valid) {
       const { title, body } = this.postForm.value;
-      console.log(title, body);
+      const newPost: Post = {
+        title,
+        body,
+      };
+      this.postService.addPost(newPost);
     }
   }
 }
