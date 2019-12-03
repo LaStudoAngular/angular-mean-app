@@ -7,23 +7,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./post-create.component.scss'],
 })
 export class PostCreateComponent implements OnInit {
-  public form: FormGroup;
+  constructor(private fb: FormBuilder) {}
 
-  constructor(private fb: FormBuilder, private postService) {}
+  public postForm = this.fb.group({
+    title: ['', Validators.required],
+    body: ['', Validators.required],
+  });
 
-  ngOnInit(): void {
-    this.form = this.fb.group({
-      title: ['', Validators.required],
-      body: ['', Validators.required],
-    });
-  }
+  public ngOnInit(): void {}
 
-  onSubmit(): void {
-    if (this.form.valid) {
-      const { title, body } = this.form.value;
-      this.form.reset();
+  public onSubmit(): void {
+    if (this.postForm.valid) {
+      const { title, body } = this.postForm.value;
       console.log(title, body);
-      this.postService.addPost({ title, body });
     }
   }
 }
